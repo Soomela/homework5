@@ -1,0 +1,55 @@
+exercise 1:
+
+//Some help:
+
+// returns a random number between 1 and the given number inclusively
+// Example: rand(5) will return 1, 2, 3, 4, or 5 randomly
+const rand = function(num) {
+  return Math.floor(Math.random() * num) + 1;
+};
+
+
+//#1 (10 points)
+
+<html>
+	<head></head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+const canvas = document.getElementById("canvas"); 
+const cnt = canvas.getContext("2d");        
+canvas.width = 1300;
+canvas.height = 700;
+
+const rand = function(num) {
+return Math.floor(Math.random() * num) + 1;
+};
+cnt.fillStyle = "pink";
+cnt.fillRect (0, 0, canvas.width, canvas.height);
+const colors = ["cyan","yellow"];
+const createBoxes = function(count, canvasWidth, canvasHeight) {
+const end = [];
+	for(let i=0; i<count; i++){
+		end[end.length]={
+			x: rand(canvasWidth-40),
+			y: rand(canvasHeight-40),
+			width: 40,
+			height: 40,
+			xDelta: 8, 
+			yDelta: 4, 
+			color: colors[rand(colors.length)-1],
+			draw: function() {
+				cnt.fillStyle = this.color;
+				cnt.fillRect(this.x, this.y, this.width, this.height)},
+			update: function() {}
+		}
+	}
+return end;
+};
+
+const b = createBoxes(4, canvas.width, canvas.height); 
+
+ 	for(let i = 0; i<b.length; i++){
+ 			b[i].draw();
+};		
+	</script></body></html>
